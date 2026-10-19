@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guru Prasad | Throwball Player</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060606;--bg2:#141414;--ink:#f5f1e8;--mut:#a9a399;--a:#d4af37;--b:#f5f1e8;--line:rgba(255,255,255,.12);--r:14px}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+h1,h2,h3,.logo{font-family:'Archivo Black',Impact,sans-serif;font-weight:400;line-height:1.05}
+nav{position:sticky;top:0;z-index:9;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px 5vw;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav a{color:var(--ink);text-decoration:none;margin-left:12px;font-size:.85rem}
+nav a:hover{color:var(--a)}
+.logo{color:var(--ink);font-size:clamp(.9rem,4vw,1.15rem);margin:0;white-space:nowrap}
+section{padding:44px 5vw;max-width:1000px;margin:auto}
+.hero{max-width:none;padding:56px 5vw 48px;text-align:center;background:radial-gradient(ellipse at 50% 0,rgba(212,175,55,.22),transparent 65%),var(--bg);border-bottom:1px solid var(--line)}
+.hero>div{max-width:760px;margin:auto}
+.hero h1{font-size:clamp(1.7rem,9.5vw,4.8rem);letter-spacing:-.01em;white-space:nowrap;background:linear-gradient(100deg,#fff 20%,var(--a));-webkit-background-clip:text;background-clip:text;color:transparent}
+.tag{display:inline-block;border:1px solid var(--a);color:var(--a);padding:5px 14px;border-radius:99px;font-weight:500;margin-bottom:14px;font-size:.85rem}
+.hero p{color:var(--mut);max-width:46ch;margin:12px auto 20px}
+.btn{display:inline-block;background:var(--a);color:#0a0a0a;border:0;padding:11px 22px;border-radius:99px;font:700 .95rem 'DM Sans',sans-serif;cursor:pointer;text-decoration:none;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}.btn.ghost{background:none;color:var(--ink);border:1px solid var(--a);margin-left:6px}
+h2{font-size:clamp(1.5rem,6vw,2.4rem);margin-bottom:18px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.card{background:var(--bg2);border:1px solid var(--line);border-top:2px solid var(--a);border-radius:var(--r);padding:18px}
+.card h3{font-size:1.05rem;margin-bottom:6px;color:var(--ink)}
+.card p{color:var(--mut);font-size:.95rem}
+.bar{height:10px;background:rgba(255,255,255,.1);border-radius:9px;overflow:hidden;margin:6px 0 12px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--a),#fff);border-radius:9px;width:0;transition:width 1.2s}
+.sk{display:flex;justify-content:space-between;font-weight:500}
+#study{max-width:none;background:#0e0e0e;border-block:1px solid var(--line)}
+#study>.in{max-width:1000px;margin:auto}
+.two{display:grid;gap:20px}
+@media(min-width:760px){.two{grid-template-columns:1fr 1fr}}
+.panel{background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.panel h3{margin-bottom:14px;font-size:1.2rem}
+.row{display:flex;gap:8px}
+input[type=text],input[type=number]{flex:1;min-width:0;background:rgba(255,255,255,.07);border:1px solid var(--line);color:var(--ink);padding:11px 14px;border-radius:12px;font:inherit;font-size:16px}
+input:focus,button:focus-visible,a:focus-visible{outline:3px solid var(--a);outline-offset:2px}
+ul{list-style:none;padding:0;margin:14px 0}
+li{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+li input{width:20px;height:20px;accent-color:var(--a)}
+li span{flex:1}li.done span{text-decoration:line-through;color:var(--mut)}
+li button{background:none;border:0;color:var(--mut);font-size:1.3rem;cursor:pointer}
+.ring{position:relative;width:200px;margin:0 auto 14px}
+.ring svg{transform:rotate(-90deg);width:100%}
+.ring circle{fill:none;stroke-width:10}
+#time{position:absolute;inset:0;display:grid;place-items:center;font:2.4rem 'Archivo Black',sans-serif}
+.pre{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+.pre button{background:none;color:var(--ink);border:1px solid var(--line);padding:7px 14px;border-radius:99px;cursor:pointer;font:inherit}
+.pre button.on{background:var(--a);color:#0a0a0a;border-color:var(--a)}
+.ctl{display:flex;gap:10px;justify-content:center}
+.stat{text-align:center;color:var(--mut);margin-top:14px;font-size:.95rem}.stat b{color:var(--a)}
+footer{text-align:center;padding:24px 5vw;color:var(--mut);border-top:1px solid var(--line)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<nav><p class="logo">Guru Prasad</p><div><a href="#about">About</a><a href="#game">Game</a><a href="#study">Study</a></div></nav>
+
+<header class="hero"><div>
+<span class="tag">State level throwball player</span>
+<h1>Guru Prasad</h1>
+<p>I play throwball at state level and study Computer Science in 12th standard. On court I read the game fast; at the desk I focus just as hard.</p>
+<a class="btn" href="#study">Start studying</a><a class="btn ghost" href="#game">My game</a>
+</div></header>
+
+<section id="about"><h2>About me</h2>
+<div class="grid">
+<div class="card"><h3>Student</h3><p>12th standard, Computer Science. Learning to build things with code.</p></div>
+<div class="card"><h3>Athlete</h3><p>State level throwball player who plays with speed, sharp reflexes and a strong team spirit.</p></div>
+<div class="card"><h3>Goal</h3><p>Balance sport and studies, and get better every single day.</p></div>
+</div></section>
+
+<section id="game"><h2>Throwball strengths</h2>
+<div class="card"><div class="sk"><span>Speed</span><span>90%</span></div><div class="bar"><i data-w="90"></i></div><div class="sk"><span>Reflexes</span><span>92%</span></div><div class="bar"><i data-w="92"></i></div><div class="sk"><span>Team play</span><span>88%</span></div><div class="bar"><i data-w="88"></i></div><div class="sk"><span>Court vision</span><span>85%</span></div><div class="bar"><i data-w="85"></i></div></div>
+<div class="grid" style="margin-top:16px">
+<div class="card"><h3>Achievements</h3><p>Add your tournaments, medals and match highlights here.</p></div>
+<div class="card"><h3>Training</h3><p>Add your weekly practice routine here.</p></div>
+</div></section>
+
+<section id="study"><div class="in"><h2>Study zone</h2>
+<div class="two">
+<div class="panel"><h3>Today's targets</h3>
+<div class="row"><input type="text" id="tin" placeholder="e.g. Finish Python chapter 3" aria-label="New study target"><button class="btn" id="add">Add</button></div>
+<ul id="list"></ul>
+<div class="bar"><i id="pb"></i></div><p class="stat" id="ptx">No targets yet. Add your first one.</p></div>
+<div class="panel"><h3>Study timer</h3>
+<div class="pre" id="pre"><button data-m="25" class="on">25 min</button><button data-m="45">45 min</button><button data-m="60">60 min</button></div>
+<div class="row" style="margin-bottom:14px"><input type="number" id="cm" min="1" max="240" placeholder="Custom minutes" aria-label="Custom minutes"><button class="btn" id="set">Set</button></div>
+<div class="ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="54" stroke="rgba(255,255,255,.1)"/><circle id="arc" cx="60" cy="60" r="54" stroke="var(--a)" stroke-linecap="round" stroke-dasharray="339.3" stroke-dashoffset="0"/></svg><div id="time">25:00</div></div>
+<div class="ctl"><button class="btn" id="go">Start</button><button class="btn ghost" id="rs">Reset</button></div>
+<p class="stat">Focused today: <b id="tot">0</b> min</p></div>
+</div></div></section>
+
+<footer>Guru Prasad · Class 12 · Computer Science</footer>
+
+<script>
+const $=s=>document.querySelector(s),KEY='guru_study',today=new Date().toDateString();
+let S;try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+S=S||{d:today,t:[],f:0};
+if(S.d!==today){S.d=today;S.f=0;S.t.forEach(x=>x.c=false)}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+function draw(){const l=$('#list');l.innerHTML='';
+ S.t.forEach((x,i)=>{const li=document.createElement('li');if(x.c)li.className='done';
+  li.innerHTML='<input type="checkbox" '+(x.c?'checked':'')+'><span></span><button aria-label="Delete target">×</button>';
+  li.querySelector('span').textContent=x.s;
+  li.querySelector('input').onchange=e=>{x.c=e.target.checked;save();draw()};
+  li.querySelector('button').onclick=()=>{S.t.splice(i,1);save();draw()};l.append(li)});
+ const n=S.t.length,c=S.t.filter(x=>x.c).length;
+ $('#pb').style.width=(n?c/n*100:0)+'%';
+ $('#ptx').textContent=n?(c===n?'All targets done. Great work!':c+' of '+n+' done'):'No targets yet. Add your first one.';
+ $('#tot').textContent=S.f}
+function addT(){const v=$('#tin').value.trim();if(!v)return;S.t.push({s:v,c:false});$('#tin').value='';save();draw()}
+$('#add').onclick=addT;$('#tin').onkeydown=e=>{if(e.key==='Enter')addT()};
+let total=1500,left=total,iv=null,done=0;
+function show(){const m=String(Math.floor(left/60)).padStart(2,'0'),s=String(left%60).padStart(2,'0');
+ $('#time').textContent=m+':'+s;$('#arc').style.strokeDashoffset=339.3*(1-left/total);document.title=iv?m+':'+s+' | Study':'Guru Prasad'}
+function beep(){try{const a=new AudioContext(),o=a.createOscillator();o.connect(a.destination);o.frequency.value=880;o.start();o.stop(a.currentTime+.6)}catch(e){}}
+function stop(){clearInterval(iv);iv=null;$('#go').textContent='Start'}
+function setT(m){stop();total=left=m*60;done=0;show()}
+$('#go').onclick=()=>{if(iv){stop();show();return}
+ $('#go').textContent='Pause';
+ iv=setInterval(()=>{left--;done++;if(done%60===0){S.f++;save();$('#tot').textContent=S.f}
+  if(left<=0){stop();left=0;beep();alert('Time is up. Take a short break!');left=total;done=0}show()},1000);show()};
+$('#rs').onclick=()=>setT(total/60);
+$('#pre').onclick=e=>{const m=e.target.dataset.m;if(!m)return;document.querySelectorAll('#pre button').forEach(b=>b.classList.toggle('on',b===e.target));setT(+m)};
+$('#set').onclick=()=>{const m=Math.min(240,Math.max(1,+$('#cm').value||0));if(m){document.querySelectorAll('#pre button').forEach(b=>b.classList.remove('on'));setT(m)}};
+document.querySelectorAll('.bar i[data-w]').forEach(b=>setTimeout(()=>b.style.width=b.dataset.w+'%',300));
+draw();show();
+</script></body></html>
+  
